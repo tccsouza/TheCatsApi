@@ -33,8 +33,8 @@ namespace TheCatsApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            _logger.LogInformation("WeatherForecastController Get - this is a nice message to test the logs", DateTime.UtcNow);
             var cats = _catsRepository.Buscar();
+            _logger.LogInformation("Requisação Get Realizada!", DateTime.UtcNow);
             return Ok(cats);
         }
 
@@ -48,9 +48,11 @@ namespace TheCatsApi.Controllers
         public IActionResult GetRaca(string name)
         {
             var cat = _catsRepository.BuscarRaca(name);
+            _logger.LogInformation("Requisação Get por nome Realizada: " + name, DateTime.UtcNow);
 
             if (cat == null)
             {
+                _logger.LogError("Requisação Get por nome falhou: "+ name, DateTime.UtcNow);
                 return NotFound();
             }
             return Ok(cat);
@@ -67,8 +69,11 @@ namespace TheCatsApi.Controllers
         {
             var cats = _catsRepository.BuscarRacaOrigem(origin);
 
+            _logger.LogInformation("Requisação Get por origem Realizada: " + origin, DateTime.UtcNow);
+
             if (cats == null)
             {
+                _logger.LogError("Requisação Get por origem falhou: " + origin, DateTime.UtcNow);
                 return NotFound();
             }
             return Ok(cats);
@@ -85,8 +90,11 @@ namespace TheCatsApi.Controllers
         {
             var cats = _catsRepository.BuscarRacaTemperamento(temperament);
 
+            _logger.LogInformation("Requisação Get por temperamento RealizadaRealizada: "+ temperament, DateTime.UtcNow);
+
             if (cats == null)
             {
+                _logger.LogError("Requisação Get por temperamento falhou: " + temperament, DateTime.UtcNow);
                 return NotFound();
             }
             return Ok(cats);

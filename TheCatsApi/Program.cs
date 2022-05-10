@@ -67,7 +67,6 @@ void ConfigureLogging()
 
 ElasticsearchSinkOptions ConfigureElasticSink(IConfigurationRoot configuration, string environment)
 {
-    string teste = $"{Assembly.GetExecutingAssembly().GetName().Name.ToLower().Replace(".", "-")}-{environment?.ToLower().Replace(".", "-")}-{DateTime.UtcNow:yyyy-MM}";
     return new ElasticsearchSinkOptions(new Uri(configuration["ElasticConfiguration:Uri"]))
     {
         AutoRegisterTemplate = true,
