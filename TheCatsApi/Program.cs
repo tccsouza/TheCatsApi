@@ -44,6 +44,9 @@ app.MapControllers();
 
 app.Run();
 
+/// <summary>
+/// Método para configurar o SeriLog para centrilização dos logs no ElasticSearch.
+/// </summary>
 void ConfigureLogging()
 {
     var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
